@@ -19,7 +19,7 @@ export class User extends React.Component<RouteComponentProps<{}>, UserProp> {
   public render() {
     return (
       <div className="container">
-        <h1>Hi!!! This is your first React WebPage!! Welcome!!!</h1>
+        <h1>Hi~~ This is your first React WebPage Welcome!</h1>
       </div>
     );
   }
