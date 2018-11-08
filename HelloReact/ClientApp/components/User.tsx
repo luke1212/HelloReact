@@ -2,10 +2,10 @@
 import { RouteComponentProps } from 'react-router';
 import 'isomorphic-fetch';
 
-interface SummaryProp {
+interface UserProp {
 }
 
-export class Summary extends React.Component<RouteComponentProps<{}>, SummaryProp> {
+export class User extends React.Component<RouteComponentProps<{}>, UserProp> {
   constructor(props: any) {
     super(props);
     this.state = {
