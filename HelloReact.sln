@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloReact", "HelloReact\HelloReact.csproj", "{689F6AC0-CFC7-462C-BA18-EBB086EF62C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloReact.Web", "HelloReact\HelloReact.Web.csproj", "{689F6AC0-CFC7-462C-BA18-EBB086EF62C3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "User.Data", "User.Data\User.Data.csproj", "{665737DF-6999-4AF4-AF6F-8B969F01985B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloReact.Core", "HelloReact.Core\HelloReact.Core.csproj", "{9BEF1586-B55A-4A6F-B3AA-5E58BA95807D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloReact.Api", "HelloReact.Api\HelloReact.Api.csproj", "{1ABC6D26-748D-4B2F-9B5D-604E06C73F26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloReact.DomainModels", "HelloReact.DomainModels\HelloReact.DomainModels.csproj", "{C4ACEB06-FAEC-4520-857F-AABCD8EFBFF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{9BEF1586-B55A-4A6F-B3AA-5E58BA95807D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BEF1586-B55A-4A6F-B3AA-5E58BA95807D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BEF1586-B55A-4A6F-B3AA-5E58BA95807D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ABC6D26-748D-4B2F-9B5D-604E06C73F26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ABC6D26-748D-4B2F-9B5D-604E06C73F26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ABC6D26-748D-4B2F-9B5D-604E06C73F26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ABC6D26-748D-4B2F-9B5D-604E06C73F26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4ACEB06-FAEC-4520-857F-AABCD8EFBFF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4ACEB06-FAEC-4520-857F-AABCD8EFBFF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4ACEB06-FAEC-4520-857F-AABCD8EFBFF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4ACEB06-FAEC-4520-857F-AABCD8EFBFF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
