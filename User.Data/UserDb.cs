@@ -5,7 +5,7 @@ namespace User.Data {
     public UserDb() {
     }
 
-    public UserDb(DbContextOptions<UserDb> options)
+    public UserDb(DbContextOptions options)
         : base(options) {
     }
 

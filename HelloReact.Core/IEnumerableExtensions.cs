@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ChronoLedger.Core {
+namespace HelloReact.Core {
   public static class IEnumerableExtensions {
 
     public static void Merge<TDest, TSource>(this IEnumerable<TDest> target,

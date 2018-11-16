@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace ChronoLedger.Core {
+namespace HelloReact.Core {
   public interface ICommandHandler<TCommand> {
     Task Handle(TCommand command);
   }

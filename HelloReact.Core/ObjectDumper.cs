@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace ChronoLedger.Core {
+namespace HelloReact.Core {
   public class ObjectDumper {
     private int _currentIndent;
     private readonly int _indentSize;
