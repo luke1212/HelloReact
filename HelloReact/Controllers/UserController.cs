@@ -15,7 +15,19 @@ namespace HelloReact.Web.Controllers {
     }
 
     [HttpGet("[action]")]
-    public IEnumerable<UserModel> GetUser() =>
-      _userApi.GetUser();
+    public IEnumerable<UserModel> GetUser() {
+      var s = _userApi.GetUser();
+      return s;
+    }
+
+    [HttpGet("[action]")]
+    public IEnumerable<UserModel> GetA() =>
+      new List<UserModel> {
+        new UserModel {
+        Id=-1,
+        Name="A"
+      }
+    };
+
   }
 }

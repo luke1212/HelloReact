@@ -17,7 +17,7 @@ namespace HelloReact.Api {
         return db.Users.Select(i => new UserModel {
           Id = i.Id,
           Name = i.Name,
-        });
+        }).ToList();
       }
     }
   }

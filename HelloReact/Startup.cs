@@ -21,7 +21,7 @@ namespace HelloReact {
       services.AddMvc();
       services.AddSingleton<UserApi>();
       services.AddSingleton(new DbContextOptionsBuilder()
-        .UseSqlServer("Server=localhost;Database=UserDb;ConnectRetryCount=0;Trusted_Connection=True;MultipleActiveResultSets=true")
+        .UseSqlServer("Server=localhost;Database=HelloReact;ConnectRetryCount=0;Trusted_Connection=True;MultipleActiveResultSets=true")
         .Options);
       services.AddSingleton<IFactory<UserDb>, DbFactory>();
     }

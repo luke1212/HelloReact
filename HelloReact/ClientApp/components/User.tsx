@@ -24,6 +24,11 @@ export class User extends React.Component<RouteComponentProps<{}>, UserState> {
       .then(data => {
         this.setState({ users: data });
       });
+    fetch('api/User/GetA')
+      .then(response => response.json() as Promise<UserModel[]>)
+      .then(data => {
+        this.setState({ users: data });
+      });
   }
 
   public render() {
