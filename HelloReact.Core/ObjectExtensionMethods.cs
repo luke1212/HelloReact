@@ -1,6 +1,6 @@
 using System;
 
-namespace ChronoLedger.Core {
+namespace HelloReact.Core {
   public static class ObjectExtensionMethods {
 
     public static TOutput Apply<TInput, TOutput>(this TInput input, Func<TInput, TOutput> function) =>

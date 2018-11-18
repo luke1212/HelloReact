@@ -4,4 +4,10 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HelloReact.Core\HelloReact.Core.csproj" />
+    <ProjectReference Include="..\HelloReact.DomainModels\HelloReact.DomainModels.csproj" />
+    <ProjectReference Include="..\User.Data\User.Data.csproj" />
+  </ItemGroup>
+
 </Project>
