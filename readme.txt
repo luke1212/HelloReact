@@ -9,6 +9,10 @@
 		          microsoft.entityframeworkCore.design 2.1.4,
 		          microsoft.entityframeworkCore.sqlserver 2.1.4,
 			  microsoft.NetCore.App 2.1.0
+5 StartUp connenct to HelloReact Database
+	 .UseSqlServer("Server=localhost;Database=HelloReact;ConnectRetryCount=0;Trusted_Connection=True;MultipleActiveResultSets=true")
+  
+
 #Scaffoled Db Command
 - Ensure HelloReact.Data is startup project
 - Use PackageManager Console with HelloReact.Data selected
