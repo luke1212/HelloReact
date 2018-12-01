@@ -2,7 +2,7 @@
 import { RouteComponentProps } from 'react-router';
 import 'isomorphic-fetch';
 import { UserModel } from '../genModels/UserModel';
-import { Row, Table,} from 'react-bootstrap';
+import { Row, Table, } from 'react-bootstrap';
 
 interface UserState {
   users: UserModel[];
@@ -30,7 +30,7 @@ export class User extends React.Component<RouteComponentProps<{}>, UserState> {
   public render() {
     return (
       <div className="container">
-        <h1>Hi~~ This is your first React WebPage Welcome!</h1>
+        <h1>User Table</h1>
         <table className="table table-hover table-condensed">
           <thead>
             <tr className="success">
@@ -47,8 +47,13 @@ export class User extends React.Component<RouteComponentProps<{}>, UserState> {
             ))}
           </tbody>
         </table>
-      </div>
-    );
+        <div className="input-group-lg">
+          <input placeholder="New User Name" />&nbsp;&nbsp;
+          <button className="btn btn-primary btn-sm">Add</button>
+        </div>
+      </div>);
+
+
   }
 
 }
