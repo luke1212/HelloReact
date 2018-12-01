@@ -13,8 +13,15 @@
     "@types/react": {
       "version": "15.0.35",
       "resolved": "https://registry.npmjs.org/@types/react/-/react-15.0.35.tgz",
-      "integrity": "sha512-SDvfa+9dIq7RBTBiPhV0V+NeLT16RSFjcsjcyIJUBLlHpOatja1mHuOlI+P7tJ7fZZeBd8CV5pHxmFt4MdpyGQ==",
-      "dev": true
+      "integrity": "sha512-SDvfa+9dIq7RBTBiPhV0V+NeLT16RSFjcsjcyIJUBLlHpOatja1mHuOlI+P7tJ7fZZeBd8CV5pHxmFt4MdpyGQ=="
+    },
+    "@types/react-bootstrap": {
+      "version": "0.32.15",
+      "resolved": "https://registry.npmjs.org/@types/react-bootstrap/-/react-bootstrap-0.32.15.tgz",
+      "integrity": "sha512-OWI9dUle8dbwVugBFQu5ganhd10VkktIRrMuDpVRL7vppp8L3nr/ZbJR4Rt4+x2xzHLhWdK/B2a/umm7oh24RQ==",
+      "requires": {
+        "@types/react": "*"
+      }
     },
     "@types/react-dom": {
       "version": "15.5.1",
