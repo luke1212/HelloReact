@@ -11,8 +11,7 @@
     "sourceMap": true,
     "skipDefaultLibCheck": true,
     "strict": true,
-    "types": [ "webpack-env" ],
-    "moduleResolution": "node"
+    "types": [ "webpack-env" ]
   },
   "exclude": [
     "bin",

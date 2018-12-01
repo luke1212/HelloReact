@@ -32,6 +32,7 @@
     "webpack-hot-middleware": "^2.18.2"
   },
   "dependencies": {
-    "@types/react-bootstrap": "^0.32.15"
+    "@types/react-bootstrap": "^0.32.15",
+    "react-bootstrap": "^0.32.4"
   }
 }
