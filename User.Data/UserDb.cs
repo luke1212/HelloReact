@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace User.Data {
+namespace HelloReact.Data {
   public partial class UserDb : DbContext {
     public UserDb() {
     }

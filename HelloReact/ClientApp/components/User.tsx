@@ -6,6 +6,7 @@ import { Row, Table, } from 'react-bootstrap';
 
 interface UserState {
   users: UserModel[];
+  newUserName: string;
 }
 
 interface UserProp {
@@ -16,6 +17,7 @@ export class User extends React.Component<RouteComponentProps<{}>, UserState> {
     super(props);
     this.state = {
       users: [],
+      newUserName: "",
     };
   }
 
@@ -25,7 +27,26 @@ export class User extends React.Component<RouteComponentProps<{}>, UserState> {
       .then(data => {
         this.setState({ users: data });
       });
+
   }
+
+  private changeText(d: any): void {
+    this.setState({newUserName: d.target.value });
+  }
+
+  private addNewUser(): void {
+    fetch('api/User/AddNewUser',{
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          UserName: this.state.newUserName,
+        })
+      });
+  }
+
 
   public render() {
     return (
@@ -48,12 +69,10 @@ export class User extends React.Component<RouteComponentProps<{}>, UserState> {
           </tbody>
         </table>
         <div className="input-group-lg">
-          <input placeholder="New User Name" />&nbsp;&nbsp;
-          <button className="btn btn-primary btn-sm">Add</button>
+          <input placeholder="New User Name" onChange={this.changeText.bind(this)}/>&nbsp;&nbsp;
+          <button className="btn btn-primary btn-sm" onClick={this.addNewUser.bind(this)}>Add</button>
         </div>
       </div>);
-
-
   }
 
 }

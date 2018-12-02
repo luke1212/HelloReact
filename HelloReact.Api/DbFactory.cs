@@ -1,6 +1,6 @@
 ﻿using HelloReact.Core;
 using Microsoft.EntityFrameworkCore;
-using User.Data;
+using HelloReact.Data;
 
 namespace HelloReact.Api {
   public class DbFactory : IFactory<UserDb> {
