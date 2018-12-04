@@ -27,7 +27,6 @@ export class User extends React.Component<RouteComponentProps<{}>, UserState> {
       .then(data => {
         this.setState({ users: data });
       });
-
   }
 
   private changeText(d: any): void {
