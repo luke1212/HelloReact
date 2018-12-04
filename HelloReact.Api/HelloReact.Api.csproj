@@ -7,7 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\HelloReact.Core\HelloReact.Core.csproj" />
     <ProjectReference Include="..\HelloReact.DomainModels\HelloReact.DomainModels.csproj" />
-    <ProjectReference Include="..\User.Data\User.Data.csproj" />
+    <ProjectReference Include="..\User.Data\HelloReact.Data.csproj" />
   </ItemGroup>
 
 </Project>

@@ -2,10 +2,11 @@
 import { RouteComponentProps } from 'react-router';
 import 'isomorphic-fetch';
 import { UserModel } from '../genModels/UserModel';
-import { Row, Table,} from 'react-bootstrap';
+import { Row, Table, } from 'react-bootstrap';
 
 interface UserState {
   users: UserModel[];
+  newUserName: string;
 }
 
 interface UserProp {
@@ -16,6 +17,7 @@ export class User extends React.Component<RouteComponentProps<{}>, UserState> {
     super(props);
     this.state = {
       users: [],
+      newUserName: "",
     };
   }
 
@@ -27,10 +29,28 @@ export class User extends React.Component<RouteComponentProps<{}>, UserState> {
       });
   }
 
+  private changeText(d: any): void {
+    this.setState({newUserName: d.target.value });
+  }
+
+  private addNewUser(): void {
+    fetch('api/User/AddNewUser',{
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          UserName: this.state.newUserName,
+        })
+      });
+  }
+
+
   public render() {
     return (
       <div className="container">
-        <h1>Hi~~ This is your first React WebPage Welcome!</h1>
+        <h1>User Table</h1>
         <table className="table table-hover table-condensed">
           <thead>
             <tr className="success">
@@ -47,8 +67,11 @@ export class User extends React.Component<RouteComponentProps<{}>, UserState> {
             ))}
           </tbody>
         </table>
-      </div>
-    );
+        <div className="input-group-lg">
+          <input placeholder="New User Name" onChange={this.changeText.bind(this)}/>&nbsp;&nbsp;
+          <button className="btn btn-primary btn-sm" onClick={this.addNewUser.bind(this)}>Add</button>
+        </div>
+      </div>);
   }
 
 }

@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using HelloReact.Core;
+using HelloReact.Data;
 using HelloReact.DomainModels;
-using User.Data;
 
 namespace HelloReact.Api {
   public class UserApi {
-    private readonly IFactory<UserDb> _dbFactory;
+    private readonly IFactory<HelloReactDB> _dbFactory;
 
-    public UserApi(IFactory<UserDb> dbFactory) {
+    public UserApi(IFactory<HelloReactDB> dbFactory) {
       _dbFactory = dbFactory;
     }
 
@@ -20,5 +20,15 @@ namespace HelloReact.Api {
         }).ToList();
       }
     }
+
+    public void AddNewUser(string newUserName) {
+      using (var db = _dbFactory.Create()) {
+        db.Users.Add(new User {
+          Name = newUserName,
+        });
+        db.SaveChanges();
+      }
+    }
+
   }
 }

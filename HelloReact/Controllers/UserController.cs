@@ -15,19 +15,15 @@ namespace HelloReact.Web.Controllers {
     }
 
     [HttpGet("[action]")]
-    public IEnumerable<UserModel> GetUser() {
-      var s = _userApi.GetUser();
-      return s;
+    public IEnumerable<UserModel> GetUser()
+      => _userApi.GetUser();
+
+    [HttpPost("[action]")]
+    public void AddNewUser([FromBody] NewUserArgs args) =>
+      _userApi.AddNewUser(args.UserName);
+
+    public class NewUserArgs {
+      public string UserName { get; set; }
     }
-
-    [HttpGet("[action]")]
-    public IEnumerable<UserModel> GetA() =>
-      new List<UserModel> {
-        new UserModel {
-        Id=-1,
-        Name="A"
-      }
-    };
-
   }
 }
