@@ -16,5 +16,5 @@
 #Scaffoled Db Command
 - Ensure HelloReact.Data is startup project
 - Use PackageManager Console with HelloReact.Data selected
-- Scaffold-DbContext "Server=localhost;Database=HelloReact;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -Context HelloReact-Force
+- Scaffold-DbContext "Server=localhost;Database=HelloReact;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -Context HelloReact -Force
 

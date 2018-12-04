@@ -6,9 +6,9 @@ using HelloReact.DomainModels;
 
 namespace HelloReact.Api {
   public class UserApi {
-    private readonly IFactory<UserDb> _dbFactory;
+    private readonly IFactory<HelloReactDB> _dbFactory;
 
-    public UserApi(IFactory<UserDb> dbFactory) {
+    public UserApi(IFactory<HelloReactDB> dbFactory) {
       _dbFactory = dbFactory;
     }
 

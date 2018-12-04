@@ -1,12 +1,12 @@
 using HelloReact.Api;
 using HelloReact.Core;
+using HelloReact.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using HelloReact.Data;
 
 namespace HelloReact {
   public class Startup {
@@ -23,7 +23,7 @@ namespace HelloReact {
       services.AddSingleton(new DbContextOptionsBuilder()
         .UseSqlServer("Server=localhost;Database=HelloReact;ConnectRetryCount=0;Trusted_Connection=True;MultipleActiveResultSets=true")
         .Options);
-      services.AddSingleton<IFactory<UserDb>, DbFactory>();
+      services.AddSingleton<IFactory<HelloReactDB>, DbFactory>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

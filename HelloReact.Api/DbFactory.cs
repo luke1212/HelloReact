@@ -1,17 +1,17 @@
 ﻿using HelloReact.Core;
-using Microsoft.EntityFrameworkCore;
 using HelloReact.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace HelloReact.Api {
-  public class DbFactory : IFactory<UserDb> {
+  public class DbFactory : IFactory<HelloReactDB> {
     private readonly DbContextOptions _options;
 
     public DbFactory(DbContextOptions options) {
       _options = options;
     }
 
-    public UserDb Create() =>
-      new UserDb(_options);
+    public HelloReactDB Create() =>
+      new HelloReactDB(_options);
 
   }
 }
