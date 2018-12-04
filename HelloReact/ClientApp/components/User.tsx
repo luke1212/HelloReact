@@ -30,22 +30,42 @@ export class User extends React.Component<RouteComponentProps<{}>, UserState> {
   }
 
   private changeText(d: any): void {
-    this.setState({newUserName: d.target.value });
+    this.setState({ newUserName: d.target.value });
   }
 
-  private addNewUser(): void {
-    fetch('api/User/AddNewUser',{
+  private addNewUser(event: Event): void {
+    event.preventDefault();
+    this.setState({newUserName: ""});
+    fetch('api/User/AddNewUser', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        UserName: this.state.newUserName,
+      })
+    })
+      .then(response => response.json() as Promise<UserModel[]>)
+      .then(data => {
+        this.setState({ users: data });
+      });
+  }
+
+  private deleteUser(e: any): void {
+    this.setState({users: this.state.users.filter((row) => row.name !== e.target.value )});
+    fetch('api/User/DeleteUser',
+      {
         method: 'POST',
         mode: 'cors',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          UserName: this.state.newUserName,
+          UserName: e.target.value,
         })
       });
   }
-
 
   public render() {
     return (
@@ -56,6 +76,7 @@ export class User extends React.Component<RouteComponentProps<{}>, UserState> {
             <tr className="success">
               <th>User Name</th>
               <th>UserID</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -63,14 +84,26 @@ export class User extends React.Component<RouteComponentProps<{}>, UserState> {
               <tr key={i}>
                 <td className="active">{u.name}</td>
                 <td className="active">{u.id}</td>
+                <td className="active">
+                  <button
+                    className="btn glyphicon glyphicon-trash"
+                    onClick={this.deleteUser.bind(this)}
+                    value={u.name}>
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
-        <div className="input-group-lg">
-          <input placeholder="New User Name" onChange={this.changeText.bind(this)}/>&nbsp;&nbsp;
-          <button className="btn btn-primary btn-sm" onClick={this.addNewUser.bind(this)}>Add</button>
-        </div>
+        <form onSubmit={this.addNewUser.bind(this)}>
+          <div className="input-group-lg">
+            <input
+              placeholder="New User Name"
+              onChange={this.changeText.bind(this)}
+              value={this.state.newUserName} />&nbsp;&nbsp;
+          <button className="btn btn-primary btn-sm">Add</button>
+          </div>
+        </form>
       </div>);
   }
 

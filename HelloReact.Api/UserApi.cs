@@ -30,5 +30,12 @@ namespace HelloReact.Api {
       }
     }
 
+    public void DeleteUser(string UserName) {
+      using (var db = _dbFactory.Create()) {
+        var user = db.Users.Single(u => u.Name == UserName);
+        db.Users.Remove(user);
+        db.SaveChanges();
+      }
+    }
   }
 }
