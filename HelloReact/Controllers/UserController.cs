@@ -19,10 +19,17 @@ namespace HelloReact.Web.Controllers {
       => _userApi.GetUser();
 
     [HttpPost("[action]")]
-    public void AddNewUser([FromBody] NewUserArgs args) =>
+    public IEnumerable<UserModel> AddNewUser([FromBody] UserArgs args) {
       _userApi.AddNewUser(args.UserName);
+      return _userApi.GetUser();
+    }
 
-    public class NewUserArgs {
+    [HttpPost("[action]")]
+    public void DeleteUser([FromBody] UserArgs args) {
+      _userApi.DeleteUser(args.UserName);
+    }
+
+    public class UserArgs {
       public string UserName { get; set; }
     }
   }
