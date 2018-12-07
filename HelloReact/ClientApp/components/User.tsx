@@ -60,13 +60,10 @@ export class User extends React.Component<RouteComponentProps<{}>, UserState> {
     var data = new FormData();
     data.append('file', this.uploadInput.files[0]);
 
-    var headers = new Headers();
-
     fetch('api/User/UploadFile',
       {
         method: 'POST',
         mode: 'cors',
-        headers: headers,
         body: data
       });
   }
