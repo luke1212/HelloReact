@@ -58,6 +58,7 @@ export class User extends React.Component<RouteComponentProps<{}>, UserState> {
     e.preventDefault();
 
     var data = new FormData();
+    data.append('fileName', this.uploadInput.files[0].name)
     data.append('file', this.uploadInput.files[0]);
 
     fetch('api/User/UploadFile',

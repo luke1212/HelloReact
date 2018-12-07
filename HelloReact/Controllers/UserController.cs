@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using HelloReact.Api;
 using HelloReact.DomainModels;
 using Microsoft.AspNetCore.Http;
@@ -31,8 +32,20 @@ namespace HelloReact.Web.Controllers {
     }
 
     [HttpPost("[action]")]
-    public void UploadFile([FromForm] IFormFile file) {
+    public void UploadFile([FromForm] UploadFileModel model) {
 
+      var savePath = Path.Combine("uploads", model.FileName);
+
+      using (var writeStream = System.IO.File.Create(savePath))
+      using (var readStream = model.File.OpenReadStream()) {
+        readStream.Seek(0, SeekOrigin.Begin);
+        readStream.CopyTo(writeStream);
+      }
+    }
+
+    public class UploadFileModel {
+      public IFormFile File { get; set; }
+      public string FileName { get; set; }
     }
 
     public class UserArgs {
