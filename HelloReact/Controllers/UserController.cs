@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using HelloReact.Api;
 using HelloReact.DomainModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -27,6 +28,11 @@ namespace HelloReact.Web.Controllers {
     [HttpPost("[action]")]
     public void DeleteUser([FromBody] UserArgs args) {
       _userApi.DeleteUser(args.UserName);
+    }
+
+    [HttpPost("[action]")]
+    public void UploadFile([FromForm] IFormFile file) {
+
     }
 
     public class UserArgs {

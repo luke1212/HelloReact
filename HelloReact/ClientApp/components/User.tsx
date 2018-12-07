@@ -35,7 +35,7 @@ export class User extends React.Component<RouteComponentProps<{}>, UserState> {
 
   private addNewUser(event: Event): void {
     event.preventDefault();
-    this.setState({newUserName: ""});
+    this.setState({ newUserName: "" });
     fetch('api/User/AddNewUser', {
       method: 'POST',
       mode: 'cors',
@@ -52,9 +52,28 @@ export class User extends React.Component<RouteComponentProps<{}>, UserState> {
       });
   }
 
+  private uploadInput:any;
+
+  private uploadFile(e: any) {
+    e.preventDefault();
+
+    var data = new FormData();
+    data.append('file', this.uploadInput.files[0]);
+
+    var headers = new Headers();
+
+    fetch('api/User/UploadFile',
+      {
+        method: 'POST',
+        mode: 'cors',
+        headers: headers,
+        body: data
+      });
+  }
+
   private deleteUser(e: any): void {
-    this.setState({users: this.state.users.filter((row) => row.name !== e.target.value )});
-    fetch('api/User/DeleteUser',
+    this.setState({ users: this.state.users.filter((row) => row.name !== e.target.value) });
+    fetch('',
       {
         method: 'POST',
         mode: 'cors',
@@ -104,6 +123,12 @@ export class User extends React.Component<RouteComponentProps<{}>, UserState> {
           <button className="btn btn-primary btn-sm">Add</button>
           </div>
         </form>
+
+        <form onSubmit={this.uploadFile.bind(this)} >
+          <input type="file" ref={(ref) => { this.uploadInput = ref; }} name="file" />
+          <input type="submit" />
+        </form>
+
       </div>);
   }
 
