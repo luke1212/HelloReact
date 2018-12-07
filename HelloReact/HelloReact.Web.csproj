@@ -22,7 +22,11 @@
 
   <ItemGroup>
     <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
+    <Compile Remove="uploads\**" />
     <Content Remove="ClientApp\**" />
+    <Content Remove="uploads\**" />
+    <EmbeddedResource Remove="uploads\**" />
+    <None Remove="uploads\**" />
   </ItemGroup>
 
   <ItemGroup>
