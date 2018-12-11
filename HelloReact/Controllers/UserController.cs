@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace HelloReact.Web.Controllers {
   [Route("api/[controller]")]
   public class UserController : Controller {
+
+    private const string _UploadsDirectoryName = "C:\\Temp\\Uploads";
     private readonly UserApi _userApi;
 
     public UserController(UserApi userApi) {
@@ -35,7 +37,7 @@ namespace HelloReact.Web.Controllers {
     [HttpPost("[action]")]
     public void UploadFile([FromForm] UploadFileModel model) {
 
-      var savePath = Path.Combine("uploads", model.FileName);
+      var savePath = Path.Combine(_UploadsDirectoryName, model.FileName);
 
       using (var writeStream = System.IO.File.Create(savePath))
       using (var readStream = model.File.OpenReadStream()) {
@@ -46,8 +48,8 @@ namespace HelloReact.Web.Controllers {
 
     [HttpGet("[action]")]
     public IActionResult GetImages([FromForm] UploadFileModel model) {
-      var fileNames = Directory.EnumerateFiles("uploads")
-        .Except(new List<string> { Path.Combine("uploads", ".keep") })
+      var fileNames = Directory.EnumerateFiles(_UploadsDirectoryName)
+        .Except(new List<string> { Path.Combine(_UploadsDirectoryName, ".keep") })
         .ToList();
 
       return this.Json(new ImageListModel {
