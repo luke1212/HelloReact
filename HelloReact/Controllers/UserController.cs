@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using HelloReact.Api;
 using HelloReact.DomainModels;
 using Microsoft.AspNetCore.Http;
@@ -43,9 +44,20 @@ namespace HelloReact.Web.Controllers {
       }
     }
 
+    [HttpGet("[action]")]
+    public IActionResult GetImages([FromForm] UploadFileModel model) {
+      var fileNames = Directory.EnumerateFiles("uploads")
+        .Except(new List<string> { Path.Combine("uploads", ".keep") })
+        .ToList();
+
+      return this.Json(new ImageListModel {
+        FileNames = fileNames
+      });
+    }
+
     public class UploadFileModel {
-      public IFormFile File { get; set; }
       public string FileName { get; set; }
+      public IFormFile File { get; set; }
     }
 
     public class UserArgs {

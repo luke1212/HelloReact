@@ -37,6 +37,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="ClientApp\genModels\ImageListModel.ts">
+      <CustomToolNamespace>..\HelloReact.DomainModels\ImageListModel.cs</CustomToolNamespace>
+    </None>
     <None Update="ClientApp\genModels\UserModel.ts">
       <CustomToolNamespace>..\HelloReact.DomainModels\UserModel.cs</CustomToolNamespace>
     </None>

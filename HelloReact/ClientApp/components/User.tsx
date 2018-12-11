@@ -3,10 +3,12 @@ import { RouteComponentProps } from 'react-router';
 import 'isomorphic-fetch';
 import { UserModel } from '../genModels/UserModel';
 import { Row, Table, } from 'react-bootstrap';
+import { ImageListModel } from 'ClientApp/genModels/ImageListModel';
 
 interface UserState {
   users: UserModel[];
   newUserName: string;
+  imageList: ImageListModel
 }
 
 interface UserProp {
@@ -18,6 +20,7 @@ export class User extends React.Component<RouteComponentProps<{}>, UserState> {
     this.state = {
       users: [],
       newUserName: "",
+      imageList: { fileNames: [] }
     };
   }
 
@@ -26,6 +29,16 @@ export class User extends React.Component<RouteComponentProps<{}>, UserState> {
       .then(response => response.json() as Promise<UserModel[]>)
       .then(data => {
         this.setState({ users: data });
+      });
+
+    this.loadImages();
+  }
+
+  private loadImages(): void {
+    fetch('api/User/GetImages')
+      .then(response => response.json() as Promise<ImageListModel>)
+      .then(data => {
+        this.setState({ imageList: data })
       });
   }
 
@@ -52,7 +65,7 @@ export class User extends React.Component<RouteComponentProps<{}>, UserState> {
       });
   }
 
-  private uploadInput:any;
+  private uploadInput: any;
 
   private uploadFile(e: any) {
     e.preventDefault();
@@ -127,6 +140,9 @@ export class User extends React.Component<RouteComponentProps<{}>, UserState> {
           <input type="submit" />
         </form>
 
+        {this.state.imageList.fileNames.map((u, i) => (
+          <img src={u} />
+        ))}
       </div>);
   }
 
