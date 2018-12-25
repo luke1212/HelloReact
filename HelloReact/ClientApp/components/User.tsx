@@ -84,7 +84,7 @@ export class User extends React.Component<RouteComponentProps<{}>, UserState> {
 
   private deleteUser(e: any): void {
     this.setState({ users: this.state.users.filter((row) => row.name !== e.target.value) });
-    fetch('',
+    fetch('api/User/DeleteUser',
       {
         method: 'POST',
         mode: 'cors',
