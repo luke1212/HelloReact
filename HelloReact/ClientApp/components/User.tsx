@@ -8,7 +8,7 @@ import { ImageListModel } from 'ClientApp/genModels/ImageListModel';
 interface UserState {
   users: UserModel[];
   newUserName: string;
-  imageList: ImageListModel
+  imageList: ImageListModel;
 }
 
 interface UserProp {
