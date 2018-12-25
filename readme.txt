@@ -2,7 +2,8 @@
 2. To make typewriter work:
    Add dependency by right click on the project--> Project Dependencies 
    Make all the version of the  netcoreappp to the 2.1 in HelloReact.web.csproj
-3 github connection: 
+3 github connection:
+   Click Create --> Browse -- File
    Click Remote --> add --> Remote name: default remote --> URL/Path: GitHubURL --> ok --> type in password
 4 database import:
    install many packages: inflector 1.0.0, 
