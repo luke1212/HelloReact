@@ -9,6 +9,7 @@ interface UserState {
   users: UserModel[];
   newUserName: string;
   imageList: ImageListModel;
+  uploadInput: any;
 }
 
 interface UserProp {
@@ -20,7 +21,8 @@ export class User extends React.Component<RouteComponentProps<{}>, UserState> {
     this.state = {
       users: [],
       newUserName: "",
-      imageList: { fileNames: [] }
+      imageList: { fileNames: [] },
+      uploadInput: [],
     };
   }
 
@@ -65,14 +67,13 @@ export class User extends React.Component<RouteComponentProps<{}>, UserState> {
       });
   }
 
-  private uploadInput: any;
 
   private uploadFile(e: any) {
     e.preventDefault();
 
     var data = new FormData();
-    data.append('fileName', this.uploadInput.files[0].name)
-    data.append('file', this.uploadInput.files[0]);
+    data.append('fileName', this.state.uploadInput[0].name)
+    data.append('file', this.state.uploadInput[0]);
 
     fetch('api/User/UploadFile',
       {
@@ -80,6 +81,12 @@ export class User extends React.Component<RouteComponentProps<{}>, UserState> {
         mode: 'cors',
         body: data
       });
+  }
+
+  private handleselectedFile(e:React.ChangeEvent<HTMLInputElement>): void {
+    this.setState({
+      uploadInput: e.target.files,
+    })
   }
 
   private deleteUser(e: any): void {
@@ -136,12 +143,12 @@ export class User extends React.Component<RouteComponentProps<{}>, UserState> {
         </form>
 
         <form onSubmit={this.uploadFile.bind(this)} >
-          <input type="file" ref={(ref) => { this.uploadInput = ref; }} name="file" />
+          <input type="file" name="file" onChange={this.handleselectedFile.bind(this)} />
           <input type="submit" />
         </form>
 
         {this.state.imageList.fileNames.map((u, i) => (
-          <img src={u} />
+          <img key={i} src={u} />
         ))}
       </div>);
   }
