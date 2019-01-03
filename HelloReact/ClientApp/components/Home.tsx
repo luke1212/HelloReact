@@ -9,7 +9,7 @@ interface HomeState {
   imageList: ImageListModel;
 }
 
-export class Home extends React.Component<RouteComponentProps<{}>, {}> {
+export class Home extends React.Component<RouteComponentProps<{}>, HomeState> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -19,11 +19,20 @@ export class Home extends React.Component<RouteComponentProps<{}>, {}> {
     };
   }
 
+  componentDidMount() {
+    fetch('api/User/GetImages')
+      .then(response => response.json() as Promise<ImageListModel>)
+      .then(data => {
+        this.setState({ imageList: data })
+      });
+  }
+
   public render() {
     return (
       <div>
-        <h1>Welcome</h1>
+        <h1 className="text-center">Welcome to Betty and Luke's Home</h1>
+        <img src={this.state.imageList.fileNames[this.state.imageList.fileNames.length-1]} />
       </div>
-      )
+    )
   }
 }

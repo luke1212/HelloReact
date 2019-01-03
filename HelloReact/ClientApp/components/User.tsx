@@ -32,11 +32,6 @@ export class User extends React.Component<RouteComponentProps<{}>, UserState> {
       .then(data => {
         this.setState({ users: data });
       });
-
-    this.loadImages();
-  }
-
-  private loadImages(): void {
     fetch('api/User/GetImages')
       .then(response => response.json() as Promise<ImageListModel>)
       .then(data => {
@@ -83,7 +78,7 @@ export class User extends React.Component<RouteComponentProps<{}>, UserState> {
       });
   }
 
-  private handleselectedFile(e:React.ChangeEvent<HTMLInputElement>): void {
+  private handleselectedFile(e: React.ChangeEvent<HTMLInputElement>): void {
     this.setState({
       uploadInput: e.target.files,
     })
